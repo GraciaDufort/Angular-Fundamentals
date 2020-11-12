@@ -2,14 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'collapsible-well',
-    template: `
-    <div (click)="toggleContent()" class="well pointable">
-        <h4>
-            <ng-content select="[well-title]"></ng-content>
-        </h4>
-        <ng-content *ngIf="visible" select="[well-body]"></ng-content>
-    </div>
-    `
+    templateUrl: './collapsible-well.component.html'
 })
 export class CollapsibleWellComponent {
     visible: boolean = true
