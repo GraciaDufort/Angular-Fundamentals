@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ISession } from '../shared';
 import { EventService } from '../shared/event.service';
 
@@ -24,8 +24,17 @@ sortBy:string = 'votes'
     }
 
     ngOnInit() {
-        this.event = this.eventService.getEvent
-        (+this.route.snapshot.params['id'])
+        this.route.params.forEach(
+            (params: Params) => { 
+                this.event = this.eventService.getEvent(+params['id'])
+                this.resetState()
+            })
+    }
+
+    resetState() {
+        this.addMode = false
+        this.filterBy = 'all'
+        this.sortBy = 'votes'
     }
 
     addSession() {
