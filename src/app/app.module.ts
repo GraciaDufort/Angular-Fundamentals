@@ -10,7 +10,10 @@ import {
   EventRouteActivator,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpVoteComponent,
+  VoterService,
+  LocationValidator
 } from './events/index';
 import { 
   JQ_TOKEN, 
@@ -47,7 +50,9 @@ let jQuery = window['$']
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpVoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ let jQuery = window['$']
     { 
       provide: 'canDeactivateCreateEvent', 
       useValue: checkDirtyState 
-    }
+    },
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })
